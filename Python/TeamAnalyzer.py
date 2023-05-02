@@ -31,6 +31,9 @@ for i, arg in enumerate(sys.argv):
     # Execute the SQL query and get the results
     cursor = conn.execute(sql)
     row = cursor.fetchone()
+    if row is None:
+        print(f"Could not find a Pokemon with pokedex number {arg}")
+        sys.exit()
 
     name = row[29]
     type1 = row[35]
